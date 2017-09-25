@@ -359,10 +359,10 @@ tcp    LISTEN     0      50                                                     
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  4308  100  4308    0     0  36067      0 --:--:-- --:--:-- --:--:-- 36508
-[root@localhost src]# ll
+# ll
 total 8
 -rw-r--r--. 1 root root 4308 Sep 19 17:15 centreon-release-3.4-4.el7.centos.noarch.rpm
-[root@localhost src]# yum install centreon-release-3.4-4.el7.centos.noarch.rpm 
+# yum install centreon-release-3.4-4.el7.centos.noarch.rpm 
 Loaded plugins: fastestmirror
 Examining centreon-release-3.4-4.el7.centos.noarch.rpm: centreon-release-3.4-4.el7.centos.noarch
 Marking centreon-release-3.4-4.el7.centos.noarch.rpm to be installed
@@ -399,7 +399,7 @@ Installed:
 
 Complete!
 
-[root@localhost src]# yum install centreon-poller-centreon-engine.noarch
+# yum install centreon-poller-centreon-engine.noarch
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
  * base: centos.brisanet.com.br
@@ -422,15 +422,17 @@ Failed:
   centreon-common.noarch 0:2.8.13-5.el7.centos                                                                                                                                                                                                
 
 Complete!
-[root@localhost src]# hostname
+# hostname
 localhost.localdomain
-[root@localhost src]# 
-[root@localhost src]# 
-[root@localhost src]# hostname poller1.centreon.gc
 
-# ----- Centreon common install failed, so retry
+# 
+# hostname poller1.centreon.gc
+```
 
-[root@localhost src]# yum install centreon-common.noarch
+> If Centreon common install failed; then  retry
+
+```
+# yum install centreon-common.noarch
 Loaded plugins: fastestmirror
 base                                                                                                                                                                                                                   | 3.6 kB  00:00:00     
 centreon-stable                                                                                                                                                                                                        | 2.9 kB  00:00:00     
@@ -476,47 +478,45 @@ Installed:
   centreon-common.noarch 0:2.8.13-5.el7.centos                                                                                                                                                                                                
 
 Complete!
-[root@localhost src]#
+```
 
-########################################
-#
-# -------  NODE 1 CENTRAL SERVER (WEB)
-#
-########################################
+## Thirth VM
 
-# ----- Install repo
+### CENTRAL SERVER (WEB)
 
+####  Install repo
 
-[root@localhost ~]# hostname centralweb.centreon.gc
-[root@localhost ~]# 
-[root@localhost ~]# 
-[root@localhost ~]# hostname
+```
+# hostname centralweb.centreon.gc
+# hostname
 centralweb.centreon.gc
-[root@localhost ~]# 
-[root@localhost ~]# curl -O http://yum.centreon.com/standard/3.4/el7/stable/noarch/RPMS/centreon-release-3.4-4.el7.centos.noarch.rpm
+# curl -O http://yum.centreon.com/standard/3.4/el7/stable/noarch/RPMS/centreon-release-3.4-4.el7.centos.noarch.rpm
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  4308  100  4308    0     0   5620      0 --:--:-- --:--:-- --:--:--  5616
+```
 
-######## OR ##############
-[root@localhost src]# curl --proxy http://10.1.120.137:8080 --proxy-user sostapowicz:C1282acd* -O http://yum.centreon.com/standard/3.4/el7/stable/noarch/RPMS/centreon-release-3.4-4.el7.centos.noarch.rpm
+### If you're behind a proxy
+
+```
+# curl --proxy http://10.1.120.137:8080 --proxy-user user:pass -O http://yum.centreon.com/standard/3.4/el7/stable/noarch/RPMS/centreon-release-3.4-4.el7.centos.noarch.rpm
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  4308  100  4308    0     0   6599      0 --:--:-- --:--:-- --:--:--  6597
-[root@localhost src]# ls -lhart
+# ls -lhart
 total 8.0K
 drwxr-xr-x. 12 root root  131 Sep 19 14:53 ..
 -rw-r--r--   1 root root 4.3K Sep 22 12:05 centreon-release-3.4-4.el7.centos.noarch.rpm
 drwxr-xr-x.  2 root root   58 Sep 22 12:05 .
-[root@localhost src]# 
+```
 
-#########################
+### Go on
 
-
-[root@localhost src]# ll
+```
+# ll
 total 8
 -rw-r--r-- 1 root root 4308 Sep 19 15:57 centreon-release-3.4-4.el7.centos.noarch.rpm
-[root@localhost src]# yum install --nogpgcheck centreon-release-3.4-4.el7.centos.noarch.rpm 
+# yum install --nogpgcheck centreon-release-3.4-4.el7.centos.noarch.rpm 
 Loaded plugins: fastestmirror
 Examining centreon-release-3.4-4.el7.centos.noarch.rpm: centreon-release-3.4-4.el7.centos.noarch
 Marking centreon-release-3.4-4.el7.centos.noarch.rpm to be installed
@@ -552,12 +552,12 @@ Installed:
   centreon-release.noarch 0:3.4-4.el7.centos                                                                                                                                                                                                  
 
 Complete!
-[root@localhost src]# 
+``` 
 
+### Install central server
 
-# Install central server
-
-[root@localhost src]# yum install centreon-base-config-centreon-engine.noarch centreon
+```
+# yum install centreon-base-config-centreon-engine.noarch centreon
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
  * base: centos.brisanet.com.br
@@ -565,7 +565,7 @@ Loading mirror speeds from cached hostfile
  * updates: centos.brisanet.com.br
 Resolving Dependencies
 --> Running transaction check
-...
+....... 
 
   t1lib.x86_64 0:5.1.2-14.el7                                                                                           tcp_wrappers-devel.x86_64 0:7.6-77.el7                                                                               
   time.x86_64 0:1.7-45.el7                                                                                              trousers.x86_64 0:0.3.14-2.el7                                                                                       
@@ -577,15 +577,19 @@ Replaced:
   mariadb-libs.x86_64 1:5.5.56-2.el7                                                                                                                                                                                                          
 
 Complete!
-[root@localhost src]# 
-[root@localhost src]# 
-[root@localhost src]# 
-[root@localhost src]# 
-[root@localhost ~]# systemctl enable httpd
+```
+
+### Set timezone php
+
+```
+# grep timezone /etc/php.ini 
+; Defines the default timezone used by the date functions
+; http://php.net/date.timezone
+date.timezone = America/Argentina/Buenos_Aires
+# systemctl enable httpd
 Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
-[root@localhost ~]# 
-[root@localhost ~]# systemctl start httpd
-[root@localhost ~]# systemctl status httpd
+# systemctl start httpd
+# systemctl status httpd
 ● httpd.service - The Apache HTTP Server
    Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
    Active: active (running) since Tue 2017-09-19 17:59:36 -03; 6s ago
@@ -605,27 +609,13 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service t
 
 Sep 19 17:59:35 centralweb.centreon.gc systemd[1]: Starting The Apache HTTP Server...
 Sep 19 17:59:36 centralweb.centreon.gc systemd[1]: Started The Apache HTTP Server.
-[root@localhost ~]# 
+```
 
-# Set timezone php
+## SnapShot BEFORE SETUP WEB CENTREON
+### Setup Centreon
 
-[root@localhost ~]# grep timezone /etc/php.ini 
-; Defines the default timezone used by the date functions
-; http://php.net/date.timezone
-date.timezone = America/Argentina/Buenos_Aires
-[root@localhost ~]# 
-
-######## SnapShot BEFORE SETUP WEB CENTREON ##############
-
-###################################
-#
-# ---------Setup Centreon
-#
-####################################
-
-Nota: Seguir los pasos de la documentacion oficial, salvando los siguiente issues encontrados en la doc
-
--- https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#configuration 
+> Nota: Seguir los pasos de la documentacion oficial, salvando los siguiente issues encontrados en la doc
+> https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#configuration 
 
 En ese bloque de la doc seteamos las credenciales de acceso y strings de conexion a la base de datos.
 Tener en cuenta que las password a usar deben cumplir con los requerimientos de seguridad de MySQL, sino el setup falla
@@ -640,7 +630,7 @@ Por lo tanto, en caso de fallo se deberan borrar las bases de datos para empezar
 ##### DB user: root@'ipcentralcentreon'/IsolationLevel54$
 ##### DB user: centreon/C3ntre0n$
 
--- https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#start-monitoring
+> https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#start-monitoring
 
 Los pasos que se describen en ese bloque no coinciden con le menu de la version que instale, la ultima.
 El unico menu de exportacion que encontre, no fue del engine, sino del poller que corre en el central server.
@@ -653,7 +643,7 @@ Para realizar el export:
 5- Click on Export again
 6- Log into the ‘root’ user on your server (central server in this case)
 7- Start Centreon Broker
-
+```
 [root@localhost log]# systemctl status cbd 
 ● cbd.service - Centreon Broker watchdog
    Loaded: loaded (/etc/systemd/system/cbd.service; enabled; vendor preset: disabled)
@@ -675,10 +665,11 @@ Sep 22 14:12:59 centralweb.centreon.gc systemd[1]: Unit cbd.service cannot be re
 Sep 22 14:17:12 centralweb.centreon.gc systemd[1]: Started Centreon Broker watchdog.
 Sep 22 14:17:12 centralweb.centreon.gc systemd[1]: Starting Centreon Broker watchdog...
 [root@localhost log]# 
-
+```
 
 8- Start Centengine
 
+```
 [root@localhost log]# systemctl status centengine
 ● centengine.service - Centreon Engine
    Loaded: loaded (/etc/systemd/system/centengine.service; enabled; vendor preset: disabled)
@@ -707,9 +698,11 @@ Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] P
 Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] Reading resource file '/etc/centreon-engine/resource.cfg'
 Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] Parsing of retention file failed: Can't open file '/var/log/centreon-engine/retention.dat'
 [root@localhost log]# 
+```
 
 9- Start CentCore
 
+```
 [root@localhost log]# systemctl status centcore
 ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
    Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
@@ -734,6 +727,7 @@ Sep 22 14:19:34 centralweb.centreon.gc runuser[21020]: pam_unix(runuser:session)
 Sep 22 14:19:34 centralweb.centreon.gc centcore[21009]: [36B blob data]
 Sep 22 14:19:34 centralweb.centreon.gc systemd[1]: Started SYSV: centcore is a Centreon program that manage pollers.
 [root@localhost log]# 
+```
 
 # Install Centreon License Manager
 
