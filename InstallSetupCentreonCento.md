@@ -627,7 +627,7 @@ Be aware that the password must meet the MYSQL security requierements, but the p
 To find the fail and want to reintent the installation steps throught the GUI Web, the process will fail because the credentials was generated on the database.
 Therefore, in fail scenario, before restart the process, must delete the databases and start again.
 
-# Credencials used on the lab
+# Credentials used on the lab
 
 ##### Web user: admin/admin1234
 ##### OS user: centreon/centreon1234
@@ -732,10 +732,12 @@ Sep 22 14:19:34 centralweb.centreon.gc systemd[1]: Started SYSV: centcore is a C
 # 
 ```
 
-### Install Centreon License Manager
-### Then install Centreon Plugin Pack Manager itself.
-### Go to "Administration" > "Parameters" > "Centreon UI"  and complete Proxy Options.
-### Then you can go to Configuration > plugin Pack and view plugin lists
+### Next steps
+
+* Install Centreon License Manager
+* Then install Centreon Plugin Pack Manager itself.
+* Go to "Administration" > "Parameters" > "Centreon UI"  and complete Proxy Options.
+* Then you can go to Configuration > plugin Pack and view plugin lists
 
 -- https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#easy-monitoring-configuration
 
@@ -744,5 +746,8 @@ hay que hacer el setup que no se encuentra en la ruta que indica el documento.
 Hay que ir a Configuration > Plugin Pack > Setup (este ultimo solo si es necesario, ie no cargue los plugins)
 WALA! los plugins
 
+Finished all the plugin installation steps (in the documentation link above) do some extra steps that aren't in the official documentation.
+Go to Configuration > Plugin Pack > Setup (the last is only if the plugins aren't load automatically)
+WALA! The plugins
 
-
+Enjoy!
