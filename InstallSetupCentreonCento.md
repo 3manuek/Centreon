@@ -741,11 +741,6 @@ Sep 22 14:19:34 centralweb.centreon.gc systemd[1]: Started SYSV: centcore is a C
 
 -- https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#easy-monitoring-configuration
 
-Luego de hacer los pasos de instalacion de los plugins, los cuales me funciono bien (no como en la iso propia de centreon), 
-hay que hacer el setup que no se encuentra en la ruta que indica el documento.
-Hay que ir a Configuration > Plugin Pack > Setup (este ultimo solo si es necesario, ie no cargue los plugins)
-WALA! los plugins
-
 Finished all the plugin installation steps (in the documentation link above) do some extra steps that aren't in the official documentation.
 Go to Configuration > Plugin Pack > Setup (the last is only if the plugins aren't load automatically)
 WALA! The plugins
