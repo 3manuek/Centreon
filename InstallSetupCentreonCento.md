@@ -636,27 +636,27 @@ Therefore, in fail scenario, before restart the process, must delete the databas
 
 > https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#start-monitoring
 
-Los pasos que se describen en ese bloque no coinciden con le menu de la version que instale, la ultima.
-El unico menu de exportacion que encontre, no fue del engine, sino del poller que corre en el central server.
-Para realizar el export: 
+The steps described below have a mismatch with the official documentation for the last Centreon version installed.
+The Export entry I found in the menu list, wasn't in the entry "Engine", was in the menu entry "Poller" that is executed on the Central Server.
+To make de export:
 
-1- Ir a Configuration > Poller > Export Configuration
-2- Click en Export
+1- Go to Configuration > Poller > Export Configuration
+2- Click on Export
 3- Uncheck Generate Configuration Files and Run monitoring engine debug (-v)
 4- Check Move Export Files and Restart Monitoring Engine
 5- Click on Export again
 6- Log into the ‘root’ user on your server (central server in this case)
 7- Start Centreon Broker
 ```
-[root@localhost log]# systemctl status cbd 
+# systemctl status cbd 
 ● cbd.service - Centreon Broker watchdog
    Loaded: loaded (/etc/systemd/system/cbd.service; enabled; vendor preset: disabled)
    Active: inactive (dead)
 
 Sep 22 14:12:59 centralweb.centreon.gc systemd[1]: Unit cbd.service cannot be reloaded because it is inactive.
-[root@localhost log]# systemctl enable cbd 
-[root@localhost log]# systemctl start cbd 
-[root@localhost log]# systemctl status cbd -l
+# systemctl enable cbd 
+# systemctl start cbd 
+# systemctl status cbd -l
 ● cbd.service - Centreon Broker watchdog
    Loaded: loaded (/etc/systemd/system/cbd.service; enabled; vendor preset: disabled)
    Active: active (running) since Fri 2017-09-22 14:17:12 -03; 3s ago
@@ -668,22 +668,21 @@ Sep 22 14:12:59 centralweb.centreon.gc systemd[1]: Unit cbd.service cannot be re
 
 Sep 22 14:17:12 centralweb.centreon.gc systemd[1]: Started Centreon Broker watchdog.
 Sep 22 14:17:12 centralweb.centreon.gc systemd[1]: Starting Centreon Broker watchdog...
-[root@localhost log]# 
+# 
 ```
 
 8- Start Centengine
 
 ```
-[root@localhost log]# systemctl status centengine
+# systemctl status centengine
 ● centengine.service - Centreon Engine
    Loaded: loaded (/etc/systemd/system/centengine.service; enabled; vendor preset: disabled)
    Active: inactive (dead)
 
 Sep 22 14:12:59 centralweb.centreon.gc systemd[1]: Unit centengine.service cannot be reloaded because it is inactive.
-[root@localhost log]# systemctl enable centengine
-[root@localhost log]# 
-[root@localhost log]# systemctl start centengine
-[root@localhost log]# systemctl status centengine -l
+# systemctl enable centengine
+# systemctl start centengine
+# systemctl status centengine -l
 ● centengine.service - Centreon Engine
    Loaded: loaded (/etc/systemd/system/centengine.service; enabled; vendor preset: disabled)
    Active: active (running) since Fri 2017-09-22 14:18:29 -03; 3s ago
@@ -701,23 +700,23 @@ Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] P
 Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] Processing object config file '/etc/centreon-engine/meta_services.cfg'
 Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] Reading resource file '/etc/centreon-engine/resource.cfg'
 Sep 22 14:18:29 centralweb.centreon.gc centengine[20963]: [1506100709] [20963] Parsing of retention file failed: Can't open file '/var/log/centreon-engine/retention.dat'
-[root@localhost log]# 
+# 
 ```
 
 9- Start CentCore
 
 ```
-[root@localhost log]# systemctl status centcore
+# systemctl status centcore
 ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
    Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
    Active: inactive (dead)
      Docs: man:systemd-sysv-generator(8)
-[root@localhost log]# systemctl enable centcore
+# systemctl enable centcore
 centcore.service is not a native service, redirecting to /sbin/chkconfig.
 Executing /sbin/chkconfig centcore on
-[root@localhost log]# 
-[root@localhost log]# systemctl start centcore
-[root@localhost log]# systemctl status centcore -l
+# 
+# systemctl start centcore
+# systemctl status centcore -l
 ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
    Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
    Active: active (running) since Fri 2017-09-22 14:19:34 -03; 2s ago
@@ -730,18 +729,13 @@ Sep 22 14:19:33 centralweb.centreon.gc systemd[1]: Starting SYSV: centcore is a 
 Sep 22 14:19:34 centralweb.centreon.gc runuser[21020]: pam_unix(runuser:session): session opened for user centreon by (uid=0)
 Sep 22 14:19:34 centralweb.centreon.gc centcore[21009]: [36B blob data]
 Sep 22 14:19:34 centralweb.centreon.gc systemd[1]: Started SYSV: centcore is a Centreon program that manage pollers.
-[root@localhost log]# 
+# 
 ```
 
-# Install Centreon License Manager
-
-# Then install Centreon Plugin Pack Manager itself.
-
-# Go to "Administration" > "Parameters" > "Centreon UI"  and complete Proxy Options.
-# Then you can go to Configuration > plugin Pack and view plugin lists
-
-
-
+### Install Centreon License Manager
+### Then install Centreon Plugin Pack Manager itself.
+### Go to "Administration" > "Parameters" > "Centreon UI"  and complete Proxy Options.
+### Then you can go to Configuration > plugin Pack and view plugin lists
 
 -- https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#easy-monitoring-configuration
 
