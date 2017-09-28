@@ -480,11 +480,11 @@ Installed:
 Complete!
 ```
 
-## Thirth VM
+## Third VM
 
 ### CENTRAL SERVER (WEB)
 
-####  Install repo
+####  Install Centreon repository
 
 ```
 # hostname centralweb.centreon.gc
@@ -496,7 +496,7 @@ centralweb.centreon.gc
 100  4308  100  4308    0     0   5620      0 --:--:-- --:--:-- --:--:--  5616
 ```
 
-### If you're behind a proxy
+### If you're behind a proxy you can use the next parameters to the curl command
 
 ```
 # curl --proxy http://10.1.120.137:8080 --proxy-user user:pass -O http://yum.centreon.com/standard/3.4/el7/stable/noarch/RPMS/centreon-release-3.4-4.el7.centos.noarch.rpm
@@ -510,10 +510,10 @@ drwxr-xr-x. 12 root root  131 Sep 19 14:53 ..
 drwxr-xr-x.  2 root root   58 Sep 22 12:05 .
 ```
 
-### Go on
+### Continue with the installation
 
 ```
-# ll
+# ls -lh
 total 8
 -rw-r--r-- 1 root root 4308 Sep 19 15:57 centreon-release-3.4-4.el7.centos.noarch.rpm
 # yum install --nogpgcheck centreon-release-3.4-4.el7.centos.noarch.rpm 
@@ -586,6 +586,10 @@ Complete!
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
 date.timezone = America/Argentina/Buenos_Aires
+```
+### Enable and start Apache
+
+```
 # systemctl enable httpd
 Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
 # systemctl start httpd
@@ -611,19 +615,19 @@ Sep 19 17:59:35 centralweb.centreon.gc systemd[1]: Starting The Apache HTTP Serv
 Sep 19 17:59:36 centralweb.centreon.gc systemd[1]: Started The Apache HTTP Server.
 ```
 
-## SnapShot BEFORE SETUP WEB CENTREON
+## Note: Run a SnapShot BEFORE SETUP WEB CENTREON
+
 ### Setup Centreon
 
-> Nota: Seguir los pasos de la documentacion oficial, salvando los siguiente issues encontrados en la doc
+> Note: Follow official documentation steps, be aware of the next issues found in the doc.
 > https://documentation.centreon.com/docs/centreon/en/latest/installation/from_centreon.html#configuration 
 
-En ese bloque de la doc seteamos las credenciales de acceso y strings de conexion a la base de datos.
-Tener en cuenta que las password a usar deben cumplir con los requerimientos de seguridad de MySQL, sino el setup falla
-Al encontrar el fallo y querer reintentar los pasos de instalacion a traves de la interfaz web, el proceso fallara 
-porque ya estan generadas las bases de datos.
-Por lo tanto, en caso de fallo se deberan borrar las bases de datos para empezar de nuevo el flujo.
+In this documentation part, set access crendential and databases string conections.
+Be aware that the password must meet the MYSQL security requierements, but the process will fail.
+To find the fail and want to reintent the installation steps throught the GUI Web, the process will fail because the credentials was generated on the database.
+Therefore, in fail scenario, before restart the process, must delete the databases and start again.
 
-# Credenciales usadas en el lab
+# Credencials used on the lab
 
 ##### Web user: admin/admin1234
 ##### OS user: centreon/centreon1234
